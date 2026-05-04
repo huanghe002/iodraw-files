@@ -1,0 +1,37 @@
+<mxfile host="www.iodraw.com" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram id="bilstm-ga-fig4-1" name="Fig4-1">
+    <mxGraphModel dx="1562" dy="845" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="input" value="输入滑动窗口&#xa;X ∈ R^{T×d} (T=w)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1FF;strokeColor=#4A90E2;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="40" y="200" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="bilstm" value="双向LSTM层&#xa;H ∈ R^{T×2h}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#27AE60;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="280" y="200" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="attn" value="目标引导注意力&#xa;Q=H_mid, K/V=H&#xa;C ∈ R^{2h}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF6E5;strokeColor=#F5A623;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="520" y="200" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fusion" value="自适应门控融合(GLU)&#xa;[H_mid; C] ∈ R^{4h}&#xa;→ R^{2h}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDECEF;strokeColor=#E74C3C;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="790" y="200" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="head" value="预测头&#xa;LN→ReLU→Dropout→Linear&#xa;ŷ ∈ R" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#7F8C8D;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="1060" y="200" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;strokeColor=#4A90E2;" parent="1" source="input" target="bilstm" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;strokeColor=#27AE60;" parent="1" source="bilstm" target="attn" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;strokeColor=#F5A623;" parent="1" source="attn" target="fusion" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;html=1;strokeColor=#E74C3C;" parent="1" source="fusion" target="head" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
